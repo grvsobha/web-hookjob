@@ -1,0 +1,254 @@
+Container Orchestratation Tool:
+=========================
+Kubernetes - K8S
+GKE- Google Kubernetes Engine - GCP
+EKS - Elastic kubernetes service - AWS
+AKS - Azure Kubernetes Service - Azure
+
+manifest file is same
+
+Docker-swarm:
+==============
+
+K8S -Pre-Req:
+================
+Cluster - a group of instances called cluster - 3 instnaces(1.Master & other 2-servers(Slaves)
+t2.micro - 8GB RAM
+K8S - 12GB RAM - AWS 
+Cloud - GCP - 
+=============
+91 Days 
+
+G-mailID
+id proof
+credit card pic as well - cvv
+
+GKE - Cluster:
+===============
+12GB RAM 6CPU - 3 Instances (Compute Instance)
+
+what is the diffrenece between docker-swarm & K8S
+=================================================
+docker-swarm - cli
+k8s - console & cli
+pod - IP Address
+
+single pod - multiple containers
+
+docker is supporting with ports
+k8s supporting with pods
+
+K8S Architecture:
+==============
+1. Master/ manager node - 1.master
+2. Workernode/slave nodes - 2. slave
+cluster - 3 instances
+
+1. Master/ manager node -
+======================
+1. API Server
+2. Scheduler
+3. Controller manager
+4. etcd
+
+ 2. Workernode/slave nodes
+================================
+1. kube-proxy
+2. kubelet
+3. kubeadm
+
+single container to connect the application:
+===================================
+1. dockerfile
+dockerimage
+docker run
+publicip:80
+login
+pushing
+tagging
+
+5 containers:
+--------------------
+
+pods:
+=============
+it is having with multiple containers
+
+multiple pods:
+===============
+we nned to create a replicsa
+
+ConfigMap:
+===========
+inject configuration data into pods
+
+Dev Pod
+
+Dev Environment
+app env: dev
+app mem: 2048m
+app.envorment: dev.env.url
+
+ Prod pod
+
+prod Environment
+app env: prod
+app mem: 8096m
+app.envorment: prod.env.url
+
+vim dev-config.yml
+
+kind: Pod
+apiVersion: v1
+metadata:
+ name: pod-config
+spec:
+  containers:
+   - image: nginx
+     name: c1
+     volumeMounts:
+       name: config-volume
+       mountPath: /etc/config
+  volume:
+   - name: config-volume
+     configMap:
+       name: dev-config
+ restartPolicy: Never
+
+
+execution:
+  kubectl get configmap dev-config -o yml
+
+Secrets:
+==============
+password, OAuth, token, and ssh keys
+
+AWS Secret Manager
+
+base 64 - encryption - d
+username: admin
+passws: admin123
+
+vim secret.yml
+
+apiVersion: v1
+kind: Secret
+metadata:
+   name: secret2
+type: opaque
+data:
+ username: dXNlcg==
+ password: YWRtaW4xMjM=
+
+cs /etc/foo
+ls
+username password
+
+Auto Scalling:
+==============
+Horizontal Auto Scalling
+HPA - Horizontal Pod Autoscaller
+
+80% - 1 pod
+create new pod
+1core = 100millicpu
+montitor server
+
+deployment:
+
+vim hpa.yml
+=============
+3 pre-req
+1. Deployment - replicas  -1
+2. service - clusterip   - 2
+3. hpa  - min & max replicas
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: nginx
+ labels:
+   app: nginx
+spec:
+ replicas: 1
+ selector:
+   matchLaabels:
+     app: nginx
+template:
+ metadata:
+  name: nginx
+  labels:
+   app: nginxpod
+ spec:
+  containers:
+    - name: nginx
+      image: nginx-latest
+      resource:
+         limits:
+           cpu: 20m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-svc
+spec:
+ type: ClusterIP
+ selector:
+  app: nginx
+ ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+
+---
+apiVersion: autoscalling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+ name: nginx-hpa
+spec:
+ scaleTargetRef:
+   apiVersion: apps/v1
+   kind: Deploymdent
+   name: nginx
+minReplicas: 1
+maxReplicas: 10
+targetCPUUtilization: 10
+
+helm- helm chart
+==================
+install helm
+helm package manager
+
+k8s:
+=========
+docker-swarm
+k8s architecture
+pods
+rs
+svc
+deployments
+rolling update/canary deployment
+storage
+statefull & stateless
+ns
+configmap
+secrets
+hpa
+blue-green depoyment
+helm
+
+prometheus and grafana  - Observability 
+============================
+
+Terraform
+
+ansible
+
+
+
+
+
+
+
+

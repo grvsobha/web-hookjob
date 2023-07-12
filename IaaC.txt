@@ -1,0 +1,52 @@
+IaaC:
+============
+Infrastructure as a Code - Terraform
+
+Pre-Req:
+=============
+ec2 server
+we need to install and configuration
+
+.tf
+main.tf
+
+Terraform will support for multiple clouds
+===================================
+Provider
+aws
+azure
+gcp
+oracle cloud
+ibm cloud
+
+AWS:
+===========
+Cloud formation
+
+API- Application programing interface
+
+Acess_key
+secret_key
+
+terraform --validate
+
+Resource & module:
+==================
+ec2 - resource
+ec2 = vpc- security- module
+
+vpc - resource
+subnets
+nat
+igw
+rt
+
+terraform arguments = input values
+terraform attributes = output values
+variables:
+==============
+input variable
+output variable
+local variable
+
+

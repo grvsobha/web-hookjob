@@ -1,0 +1,146 @@
+Terraform resource and module differences:
+=======================================
+VPC Module - user story - 1day
+
+variable :
+==================
+
+AWS VPC with NATGateway using Terraform:
+======================================
+1. terraform module
+2. create VPC Using Terraform
+3. Define Input Variables for VPC Terrafrom module
+4. Define Local Values for VPC Terrafrom module
+5. terraform variables
+6. output values
+
+create a VPC module terraform configuration:
+==================================
+1. c1-version.tf
+2. c2-variable.tf
+3. c3-vpc.tf
+
+# create VPC Terraform Module
+
+module "vpc" {
+source = "terraform-aws-modules/vpc/aws"
+
+
+Req:
+===========
+multiple regions
+
+3 diffrent region
+1. us-east-1
+2. us-east-2
+
+tf
+=======
+t3.small
+
+console:
+=========
+t2.micro
+
+applying - tf - t3.small
+
+
+ version = "2.78.0"
+
+
+c2-varaible.tf
+================
+input variable
+
+#aws region
+variable "aws_region" {
+  description = "Region in which AWS resource to be created"
+  type = string
+  default = "us-east-1"
+}
+
+# Environment variable
+variable "environment" {
+  description = "Environment variables used s prefix"
+  type = string
+  default = "dev"
+}
+
+# Business Division
+variable "business_division" {
+  description = "Business division"
+  type = string
+  default = "HR"
+}
+
+c3-local-values.tf
+======================
+
+  owners = var.business_division 
+  environment = var.environment
+  name = "${var.business_division}-${var.environment}"
+  common_tags = {
+    owners = local.owners
+    environment = local.environment
+ }
+}
+
+
+
+
+VPC manual creation 
+vpc input varaible
+vpc-mdofule.tf
+VPC output.tf
+
+
+
+variable.tf
+===================
+locals {variable "aws_region" {
+  description = "Region in which AWS Resources to be created"
+  type = string
+  default = "us-east-1"
+}
+
+variable "ec2_ami_id" {
+  description = "AMI ID"
+  type = string  
+  default = "ami-0915bcb5fa77e4892"
+}
+
+variable "ec2_instance_type" {
+  description = "EC2 Instance Type"
+  type = string
+  default = "t3.micro"
+}
+variable "vpcname" {
+ description = "name for VPC"
+ type = string
+ defaulit = "myvpc"
+
+
+manifest file
+
+variable:
+===============
+1. input varaiable
+2. output valiues
+3. local valuse
+
+VPC name
+cidr RANGE
+
+Container Orchestratation Tool:
+========================================
+GCP - GKE
+EKS - Elastic kubernetes service - AWS
+
+EKS - Cluster
+12 GB RAM
+50 GB RAM
+terraform
+
+dev 
+
+

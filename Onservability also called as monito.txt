@@ -1,0 +1,20 @@
+Onservability also called as monitoring tool:
+========================================
+prometheus & Grafana
+
+Prometheus 
+
+its an open-source technology desinged to provide monitoring and alerting functionality for cloud native environmnets
+including kubernetes
+
+Grafana:
+
+Gragana is an open cource interactive data-visualization platform.
+
+EKS Cluster:
+==============
+deployment
+
+helm:
+==========
+install the helm

@@ -1,0 +1,353 @@
+AWS Services:
+=================
+1. EC2 instance 
+====================
+
+2 ways
+console
+CLI/terraform - access key & secreat key
+
+type - t2.micro - free - 8GB
+
+m5dx.2xlarge
+
+Network:
+============
+VPC - INFRA Team
+
+key- cloud 
+
+PoC - Proof of concept:
+=====================
+key - 
+servers are not stopped 
+
+spot instance 
+reserved instance
+on-demanding
+
+EBS:
+===========
+Elastic Block storage:
+
+take snapshot(Backup)
+increase the volume
+
+Region:
+============
+is a country 
+Availability Zone:
+==================
+is states
+2-6 az
+
+mumbai
+hyd - 2022 march data center
+us - different Amazon data center
+2 servers:
+=============
+mumbai region
+
+aws - 37-39% - console - cli
+azure - 20 %
+GCP -10%
+
+99.999999% - high availability 
+security - aws
+networking - aws 
+
+how many regions
+===============
+az 
+2- 6 az
+
+increase the volume:
+=======================
+100GB - server
+80 % - 80GB
+production server should always up running
+
+Volume - available state - attach the volume to existing docker - 
+
+Volume:
+=======
+1. root volume - t2.micro - 8GB RAM - 36GB RAM - 100GB Ram - production server
+2. EBS volume - create - attach 
+
+2 gb ram - 1b - docker server - you have attached - 2GB
+
+
+2 servers:
+===========
+n.varginia - 1 server - 2gb(100GB) volume - detach volume - available state -(convert snapshot) - add snapshot move source(n.varginia) dest- singore
+Singapore - 100GB -
+
+
+AMI:
+=========
+Amazon Machine Image
+
+Snapshots - Backup:
+================
+docker-compose
+
+docker-compose is completed stopped -
+
+decoding message - 2 lines
+
+putty server - 48hrs
+console - i do have access
+
+1. AMI
+2. Snapshot
+
+docker-compose server - stopped state
+
+i have created AMI - I will be recreating - docker-compose, yaml , latest server publicip:portnumber(wordpress), php
+
+docker-compose up d
+
+308 lines
+
+KMS in S3
+
+Status Check:
+---------------------
+2/2 server - perfect
+1/2 - instanc status check failed - Rebbot the instance
+0/2 - system status check failed - stop and start the ec2 instance
+
+Load Balancer:
+====================
+min - server 
+Loadbalancer only incoming traffic
+AWS - 10 Servers
+4th server's unhealthy condition
+5th server 
+some reason
+
+4th server
+5th server
+
+2servers 
+============
+same security group
+simple web application
+application - putty server
+Bastin server
+
+LoadBalancer:
+=============
+4 types
+1. Application LB
+2. N/W LB
+3. gateway lb
+4. classic lb
+
+PublicIP: 3.93.248.247 - reboot -ip wont change - 3.93.248.247 - 44.212.22.146
+stop & start -ip address change - EIP
+
+EC2, Networking,VPC, Storage S3, EBS, RDS, Monitorin Tool
+
+SSL - secure socket layer - ssl certificate
+
+
+webserver-1
+unhealth
+
+Auto Scalling:
+===============
+Pre-req
+
+ec2 - 10 server
+ec2 - 30 % discount- 30k discount
+millin users are hit amazone
+
+auto scalling
+minimum to - 10 -20
+maximum capacity -50 - 100 - 20 EC2 instance
+
+launch
+
+Notication:
+===============
+SNS - Simple notication service - E-Mail notification
+
+
+cloud watch is montoring tool:
+==================================
+system logs - ec2 servers
+application logs - DB logs
+ec2 server - 
+ min 
+max
+
+ec instance - jenkins server
+==========================
+server reaching 90 - taking a lot of time finally its failing
+for that reason alarm - 80% - we will get E-mail alert
+30% - alarm -1
+cpuutilization - 30% - alarm 1
+cpuutilization - 80% - alarm2
+                - 90 % - crtical
+time - 5 minutes
+2 system types
+1. system logs - 5 minutes
+   cpu, memory, n/w,system status check
+2. application logs - 1 minute - db logs etc
+
+cloudwatch alaerts:
+=====================
+pre-req:
+ 1. metric check - whenever server is created by default metric check also created
+cpu, alb,nlb,memory,
+500000
+500M
+Memory Utilization
+
+Application logs:
+=====================
+Https_4XX-Error -1 minute - name
+Https_5XXError - 1 minute - name
+
+EIP Adderess:
+================
+
+18.217.255.143 - stop & start ip will change - Private IP wont change
+18.219.146.58
+
+172.31.20.253 - private stop
+
+EIP 
+======
+associate
+3.142.127.195
+3.142.127.195
+3.142.127.195
+
+Termination protection policies:
+=======================
+1.EC2 - region
+  LB
+  AS
+EIP
+CW
+SNS
+AMI
+EBS
+S3- Simple storage Service/scalable storage
+will create into Global level -
+s3 bucket - will create a regioin - uploading the producation
+link - i am giving the access to onsite
+object - 0-5TB
+Cli - 0-5GB
+30 - days
+60 - days
+90 - days
+180 - days
+
+versioning :
+==============
+buckets
+2 diff version object
+encryption - buckets
+
+s3 bucket name unique 
+
+Object:
+==========
+versioning as well
+delete as marker - it will not be delete permanent
+s3
+
+IAM:
+========
+Global
+Route53:
+=============
+Global 
+
+Static website hosting:
+=========================
+2 index.html
+1. index.html
+2. error.html
+4. 403 forbidden
+
+we need have bucket:
+
+enable ACL
+
+CRR : Cross Region Replication
+======================
+ohio - s3 object -deleted
+varginia - s3 - backup is available
+
+2 bucket
+1. ohio - ohiotest16thmay
+2. n.varginia -nvar16thmay
+
+
+crr 
+source to destination
+vargina - s3 notes
+ohio region - s3 notes
+ohio region - delete here s3 files
+vargina
+
+Life cycle managenegt:
+=================
+30 days
+60
+90
+180
+
+PoC:
+=======
+Proof of Concept
+
+IAM:
+==========
+Identity and access management
+users
+groups
+roles
+policies
+
+CLI:
+===========
+Commnad Line Interface:
+================
+windows cli
+ https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+
+access_key
+secret_key
+
+i can allow him to s3 access
+ec2
+
+users 
+==========
+console
+aws cli
+
+very change the password
+
+https://104098526744.signin.aws.amazon.com/console
+root user - all the access
+IAM User - 
+id - 12 digits number - cononical ID
+
+104098526744
+
+AWS - EC2
+
+
+
+
+
+
+
+
+
